@@ -1,0 +1,38 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.table_row{
+    display: flex;
+    flex-direction: row;
+    border-collapse: collapse;
+}
+
+.table_cell{
+    background-color: white;
+    width: 200px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    border: 0.5px solid black;
+    border-collapse: collapse;
+    
+    
+    input{
+        width: 190px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        outline: 0;
+        border: 0;
+        border-collapse: collapse;
+        font-size: 1.1em;
+    }
+}
+
+
+
+.table{
+    border-collapse: collapse;
+    border: 1px solid black;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
