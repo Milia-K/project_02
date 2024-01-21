@@ -7,7 +7,6 @@ const useWordsString = () => {
         setWords((prevWords) => [...prevWords, word]);
     };
     const wordsString = myWords.map((word) => word.english);
-    console.log(myWords)
 
     return { addWord, wordsString };
 };

@@ -25,8 +25,8 @@ const [savedWords, setWordsString] = useState({});
             <button className='button_savedWords' onClick={resetSavedWords}> <FontAwesomeIcon icon={faArrowRotateRight} /></button>
                 <div className='listSaveWords'>
                     <ul>
-                    {Object.entries(savedWords).map((word, index) => (
-                        <li key={index}>{word}</li>
+                    {Object.values(savedWords).map((word, id) => (
+                        <li key={id}>{word}</li>
                     ))}
                     </ul>
                 </div>

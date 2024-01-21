@@ -1,9 +1,13 @@
 import React, { useState} from 'react'
 import ComponentCard from './ComponentCard'
 import UseWordsString from './UseWordsString';
+import { MyContext } from '../../Context/MyContext';
+import { useContext } from 'react'
 
 
-function Card({appData}) {
+function Card() {
+
+    const {appData, setAppData} = useContext(MyContext);
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isCardClicked, setIsCardClicked] = useState(false);

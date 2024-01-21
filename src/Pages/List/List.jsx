@@ -2,10 +2,10 @@ import React from 'react'
 import Table from '../../Components/ListWords/Table'
 
 
-function List({appData}) {
+function List() {
   return (
     <div>
-      <Table appData={appData}/>
+      <Table/>
     </div>
   )
 }
