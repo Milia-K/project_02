@@ -29,8 +29,8 @@ function TableRow(props) {
     };
 
 
-    const handleDeleteChange = (id) => { // Поменяли имя параметра на deletedId
-        let newAppData = appData.filter((item) => item.id !== id); // Используем новое имя параметра
+    const handleDeleteChange = (id) => { 
+        let newAppData = appData.filter((item) => item.id !== id);
         setAppData(newAppData);
         console.log(newAppData);
     };
