@@ -29,10 +29,11 @@ function TableRow(props) {
     };
 
 
-    const handleDeleteChange = (id) => { 
+    async function handleDeleteChange(id){
         let newAppData = appData.filter((item) => item.id !== id);
         setAppData(newAppData);
         console.log(newAppData);
+        await Delete.deleteWord(id)
     };
     
 

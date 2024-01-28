@@ -24,6 +24,7 @@ return (
     {appData.map((word, id) => (
         <TableRow 
             key={id}
+            id={word.id}
             english={word.english}
             transcription={word.transcription}
             russian={word.russian}
