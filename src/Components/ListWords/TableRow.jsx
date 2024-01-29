@@ -1,18 +1,19 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencil, faCheck, faTrash} from '@fortawesome/free-solid-svg-icons'
-import { MyContext } from '../../Context/MyContext';
-import { useContext } from 'react'
+import wordStore from '../../Store/WordStore'
+import { inject, observer } from 'mobx-react'
+import Get from '../../Services/Get';
+import Delete from '../../Services/Delete'
 
 
-function TableRow(props) {
+const TableRow = (props) => {
 
     const {id} = props;
-    const {appData, setAppData} = useContext(MyContext);
 
-    const [english, setEnglish] = useState(props.english);
-    const [transcription, setTranscription] = useState(props.transcription);
-    const [russian, setRussian] = useState(props.russian);
+    const [english, setEnglish] = useState(props.english || '');
+    const [transcription, setTranscription] = useState(props.transcription || '');
+    const [russian, setRussian] = useState(props.russian || '');
 
     const [isInputUnblocked, setIsInputUnblocked] = useState(false);
 
@@ -28,11 +29,18 @@ function TableRow(props) {
         }
     };
 
+    useEffect(() => {
+        async function fetchData() {
+            const data = await Get.getAppData();
+            wordStore.setAppData(data);
+        }
+        fetchData();
+    }, []);
+
 
     async function handleDeleteChange(id){
         let newAppData = appData.filter((item) => item.id !== id);
-        setAppData(newAppData);
-        console.log(newAppData);
+        wordStore.setAppData(newAppData)
         await Delete.deleteWord(id)
     };
     
@@ -69,4 +77,5 @@ function TableRow(props) {
     )
 }
 
-export default TableRow;
+
+export default inject('wordStore')(observer(TableRow));

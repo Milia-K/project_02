@@ -7,7 +7,7 @@ class Delete {
         return resp.json();
         } catch (e) {
         console.error(e);
-        throw e; // выбрасываем исключение для обработки в вызывающем коде
+        throw e; 
         }
     }
 }

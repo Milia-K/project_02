@@ -1,16 +1,15 @@
-import React, {useState} from 'react'
 import TableRow from './TableRow'
 import './table.scss'
 import ListTableHeader from './ListTableHeader'
-import { MyContext } from '../../Context/MyContext';
-import { useContext } from 'react'
+import { inject, observer} from 'mobx-react';
 import NewRow from './NewRow';
+import wordStore from '../../Store/WordStore';
 
 
-function Table() {
 
-const {appData, setAppData} = useContext(MyContext);
+const Table = () => {
 
+const {appData} = wordStore;
 
 return (
     <div > 
@@ -21,7 +20,7 @@ return (
 
         <div className='table'>
         <ListTableHeader/>
-    {appData.map((word, id) => (
+    {appData && appData.map((word, id) => (
         <TableRow 
             key={id}
             id={word.id}
@@ -33,7 +32,7 @@ return (
     ))}
     </div>
     </div>
-  )
+)
 }
 
-export default Table;
+export default inject('wordStore')(observer(Table));
